@@ -1,0 +1,147 @@
+
+$primary-color: #13c2c2;
+
+.form-panel {
+  box-sizing: border-box;
+  height: 100%;
+  background: #eee;
+  position: relative;
+  .draggable-box {
+    height: 100%;
+    background: #e0e0e0;
+    overflow: auto;
+    .list-main {
+      box-sizing: border-box;
+      min-height: 100%; // 一定要设置高度，才能承接从左边拖过来得form item
+      position: relative;
+      background: #fafafa;
+      padding: 5px
+    }
+  }
+}
+
+// drag form
+// 中间头部按钮
+.center-container {
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  
+  .btn-bar {
+    height: 45px;
+    line-height: 45px;
+    font-size: 18px;
+    border-bottom: solid 2px #e4e7ed;
+    text-align: right;
+  }
+}
+
+.drag-move-box {
+  position  : relative;
+  box-sizing: border-box;
+  // padding: 0px 10px 0 0;
+  // padding   : 8px;
+  overflow  : hidden;
+  transition: all .3s;
+  min-height: 50px;
+  // line-height: 50px;
+  // background: yellow;
+
+  &:hover {
+    background:rgba(19, 194, 194, 0.2);
+  }
+  &:before {
+    content: '';
+    height: 5px;
+    width: 100%;
+    background: #13c2c2;
+    position: absolute;
+    top: 0;
+    right: -100%;
+    transition: all .3s;
+  }
+  &.active {
+    &::before {
+      right: 0;
+    }
+
+    background:rgba(19, 194, 194, 0.2);
+    outline-offset: 0;
+  }
+
+  .form-item-box {
+    padding: 0 10px
+  }
+}
+// .active {
+//   background: red;
+//   outline-offset: 0;
+//   border-top: 5px solid #13c2c2
+// }
+
+.show-key-box {
+  // 显示key
+  position : absolute;
+  bottom   : 2px;
+  right    : 5px;
+  font-size: 14px;
+  z-index  : 989;
+  color    : #13c2c2;
+  // &.active {
+  //   color: red
+  // }
+}
+// .action-icon-box {
+//   display: absolute;
+//   background: red;
+// }
+.copy,
+.delete {
+  float: right;
+  justify-content: right;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  z-index: 999;
+  opacity: 0;
+  transition: all .3s;
+
+  &.unactivated {
+    opacity: 0 !important;
+    pointer-events: none;
+  }
+  
+  &.active {
+    opacity: 1 !important;
+  }
+}
+.copy {
+  border-radius: 0 0 0 8px;
+  right: 30px;
+  background: #13c2c2;
+}
+.delete {
+  border-right: 0px;
+  background:#13c2c2;
+}
+
+// 动态表格设计
+.batch-box {
+  position: relative;
+  box-sizing: border-box;
+  padding: 5px;
+  background: #b99bf5;
+  width: 100%;
+  transition: all .3s;
+  overflow  : hidden;
+
+  .draggable-box {
+    min-height: 60px;
+    width: 100%;
+    border: 1px #ccc dashed;
+    background: #fff;
+  }
+}
